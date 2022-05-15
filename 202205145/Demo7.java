@@ -11,6 +11,8 @@ public class Demo7 {
 		int num1 = 10; // 전역변수  global variable
 		System.out.println(num1);
 		
+		// 변수는 생성된 블럭이 없어지면 사라진다.
+		// 없어진다는-> 실행이 다 되었다..다 지나갔다.
 		{
 			System.out.println(num1);
 			int num2 = 20; // 지역변수  local variable
