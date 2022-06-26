@@ -23,7 +23,7 @@ public class RobotPet extends Pet implements Skinable{
 		return null;
 	}
 	@Override
-	public void changeSkin(Color color) {
+	public void changeSkin(Color color) {		
 		switch (color) {
 		case BLACK: break;
 		case BLUE: break;
