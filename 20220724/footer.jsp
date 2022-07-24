@@ -1,0 +1,1 @@
+<p>&copy; WebMarket</p>
