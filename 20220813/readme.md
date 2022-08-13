@@ -1,4 +1,6 @@
 # 다국어
+
+# 시큐리티 BASIC 셋팅
 ### web.xml
 	<security-role>
 		<role-name>manager</role-name>
