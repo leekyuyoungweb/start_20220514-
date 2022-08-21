@@ -49,12 +49,14 @@ public class LogfileFilter implements Filter {
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		
-		String filename =  filterConfig.getInitParameter("filename");
-		String filePath = getCurrentTime(true);
-		filename = filePath+"/" + filename;
-		if(filename == null) throw new ServletException("로그파일을 찾을수 없습니다.");
+		String fileName =  filterConfig.getInitParameter("fileName");
+		String filePath =  filterConfig.getInitParameter("filePath");
+		String currentTime = getCurrentTime(true);
+		fileName = filePath+"/" + currentTime+"_"+fileName;
+		System.out.println(fileName);
+		if(fileName == null) throw new ServletException("로그파일을 찾을수 없습니다.");
 		try {
-			writer = new PrintWriter(new FileWriter(filename, true),true);
+			writer = new PrintWriter(new FileWriter(fileName, true),true);
 		} catch (IOException e) {
 			throw new ServletException("로그파일을 열수 없습니다.");
 		}
