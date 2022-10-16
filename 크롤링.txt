@@ -1,0 +1,17 @@
+public void getWebCrawling() {		
+		for (int pagenum = 0; pagenum < 10; pagenum++) {
+			String url = "https://korean.visitseoul.net/restaurants?curPage="+pagenum;		
+			try {
+				Document doc =   Jsoup.connect(url).get();
+				Elements elem = doc.select("div > span.small-text.text-dot-d");
+				for(Element e : elem) {
+					System.out.println(e.text());
+				}		
+				
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+		}			
+	}
