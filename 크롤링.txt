@@ -1,17 +1,28 @@
-public void getWebCrawling() {		
-		for (int pagenum = 0; pagenum < 10; pagenum++) {
-			String url = "https://korean.visitseoul.net/restaurants?curPage="+pagenum;		
-			try {
-				Document doc =   Jsoup.connect(url).get();
-				Elements elem = doc.select("div > span.small-text.text-dot-d");
-				for(Element e : elem) {
-					System.out.println(e.text());
-				}		
-				
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-		}			
+public void getWebCrawling2() {
+		// #postSearchFrm > section > div.article-list-slide > ul
+		int pagenum = 0;
+		String url = "https://korean.visitseoul.net/restaurants?curPage=1";
+		try {
+			Document doc =   Jsoup.connect(url).get();
+			Elements elem = doc.select("#postSearchFrm > section > div.article-list-slide > ul > li");
+			for(Element e : elem) {
+				String subPath = "https://korean.visitseoul.net" + e.select("a").attr("href");
+				System.out.println(e.select("span.title").text());
+				System.out.println(e.select("span.small-text.text-dot-d").text());				
+				System.out.println(subPath);
+				getLink(subPath);
+			}		
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+	
+	public void getLink(String url) throws Exception {
+		Document doc =   Jsoup.connect(url).get();
+		Elements elem = doc.select("#container > div.detial-cont-element.active > div > dl");
+		for (Element e : elem) {
+			System.out.println(e.select("dt").text() + " : " + e.select("dd").text());			
+		}
 	}
